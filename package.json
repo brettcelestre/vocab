@@ -1,0 +1,30 @@
+{
+  "name": "vocab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brettcelestre/vocab.git"
+  },
+  "keywords": [
+    "vocab"
+  ],
+  "author": "Brett Celestre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brettcelestre/vocab/issues"
+  },
+  "homepage": "https://github.com/brettcelestre/vocab#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-session": "^1.15.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
