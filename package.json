@@ -5,7 +5,8 @@
   "main": "server/server.js",
   "scripts": {
     "test": "npm test",
-    "start": "nodemon server/server.js"
+    "start": "node server/server.js",
+    "mon": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,23 @@
   },
   "homepage": "https://github.com/brettcelestre/vocab#readme",
   "dependencies": {
+    "aws-sdk": "^2.152.0",
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "connect-dynamodb-session": "^1.1.0",
+    "connect-mongo": "^2.0.0",
     "express": "^4.16.2",
-    "express-session": "^1.15.6"
+    "express-session": "^1.15.6",
+    "mocha": "^4.0.1",
+    "module": "^1.2.5",
+    "mongod": "^2.0.0",
+    "mongoose": "^4.13.5",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7",
+    "q": "^1.5.1",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
+    "socket.io": "^2.0.4"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
