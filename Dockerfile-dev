@@ -1,0 +1,11 @@
+FROM node:6.11
+
+RUN mkdir -p /usr/src/app
+VOLUME /usr/src/app
+WORKDIR /usr/src/app
+
+ENV NODE_ENV=dev
+ENV PORT=2727
+EXPOSE 2727
+
+CMD ["npm", "run", "mon"]

@@ -34,4 +34,4 @@ node_modules
 notes.*
 
 ### Docker ###
-docker-compose
+docker-compose.yml
