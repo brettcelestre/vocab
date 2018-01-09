@@ -3,6 +3,9 @@
 // Stubs
 const signUpStubs = require('./signUpStubs');
 
+// Models
+const User = require('./signUpModel');
+
 module.exports = {
 
   signUp: function(req, res) {
@@ -10,21 +13,31 @@ module.exports = {
     if ( req.headers['x-stub'] ) {
       res.status(200).send(signUpStubs.post(req.headers['x-stub']));
     }
-
-    console.log('signupController signup() - req.body.username: ', req.body.username);
     
-    // Checks if username is already signed up 
-      // if already signed up, send message
-      // if not signed up, create account
-
-    // req.session.regenerate(function() {
-    //     req.session.user = req.body.user;
-
-    //     res.status(200).send({user: req.body.user});
-    //   });
-    
-    // console.log('req.session ===', req.session);
-
-    res.status(200).send({username: req.body.username});
+    User.findOne({username: req.body.username})
+      .exec(function(err, user) {
+        // If user doesn't exist
+        if (!user) {
+          var newUser = new User(req.body);
+          newUser.save(function(err, user) {
+            if (err) {
+              console.log('========== err = ', err);
+              res.send(err);
+              return console.error(err);
+            } else {
+            // If no error, regenerates session
+              req.session.regenerate(function() {
+                // Adds this user to current session
+                req.session.user = user;
+                res.status(201).send({username: user.username});
+              });
+            }
+          });
+        // This user already exists
+        } else {
+          res.status(409).send({message: 'Username already exists.'});
+        }
+      });
   }
+
 };
