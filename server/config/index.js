@@ -1,6 +1,9 @@
 
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const expressJoi = require('express-joi-validator');
+
+const signUpModel = require('app/server/api/users/signUp/signUpValidation');
 
 module.exports = function (app, express) {
   
@@ -17,10 +20,10 @@ module.exports = function (app, express) {
   app.use(bodyParser.json());
   // app.use(express.static(__dirname + '/../../client'));
 
-  app.use('/', healthCheck);
+  app.use('/health-check', healthCheck);
   require('../api/users/healthCheck/healthCheckRoutes')(healthCheck);
 
-  app.use('/signup', signUpRoutes);
+  app.use('/signup', expressJoi(signUpModel), signUpRoutes);
   require('../api/users/signUp/signUpRoutes')(signUpRoutes);
 
   app.use('/login', loginRoutes);
@@ -37,4 +40,11 @@ module.exports = function (app, express) {
 
   app.use('/words', addRoutes);
   require('../api/words/add/addRoutes')(addRoutes);
+
+  // General Error Handler
+  app.use(function (err, req, res, next) {
+    if (err.isBoom) {
+      return res.status(err.output.statusCode).json(err.output.payload);
+    }
+  });
 };
