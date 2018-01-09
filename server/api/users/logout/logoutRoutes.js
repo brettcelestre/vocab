@@ -4,6 +4,6 @@ const logoutController = require('./logoutController');
 module.exports = function(app) {
 
   app.route('/')
-    .post(logoutController.logout)
+    .get(logoutController.logout)
 
 };
