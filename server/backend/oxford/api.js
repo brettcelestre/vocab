@@ -37,8 +37,11 @@ const getDefinition = (word) => {
     headers: defaultHeader
   };
 
-  return request(options).then((res) => {
+  return request(options)
+    .then((res) => {
       const data = JSON.parse(res);
+
+      // return convertWord(data);
 
       // Builds word entries
       const dbWordModel = {
@@ -107,6 +110,9 @@ const getDefinition = (word) => {
         });
       }
 
+      console.log('Oxford > Get Definition > dbWordModel = ', dbWordModel);
+
+      // Returns word
       return dbWordModel;
     })
     .catch((err) => {
