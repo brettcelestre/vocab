@@ -7,9 +7,10 @@ const oxford = require('./oxford');
 const getWord = (word) => {
   console.log('Helpers > getWord =', word);
 
-  // Check DB
+  // Check DB for word first
   return db.api.getWord(word)
     .then((data) => {
+      // If we don't already have the word in our DB
       if (data === null) {
         console.log('Helpers - word does not exist');
         // Get word from Oxford API
@@ -20,6 +21,7 @@ const getWord = (word) => {
             db.api.saveWord(data);
             return data;
           });
+      // If we already have word, return it
       } else {
         console.log('Helpers - We already have the word');
         return data;
