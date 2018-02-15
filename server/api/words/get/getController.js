@@ -2,8 +2,9 @@
 
 // Stubs
 // const loginStubs = require('./loginStubs');
+// const oxford = require('app/server/backend/oxford');
 
-const oxford = require('app/server/backend/oxford');
+const helpers = require('app/server/backend/helpers');
 
 module.exports = {
 
@@ -15,17 +16,25 @@ module.exports = {
     }
 
     const { word } = req.params;
+
+    console.log('Words > Get > ', word);
+
+    helpers.getWord(word)
+      .then((data) => {
+        console.log('WORDS - getController = ', data);
+        res.status(200).send(data);
+      });
  
       // Check if word already exists our db
         // If it does, throw error
         // If not, proceed
     // check if we already have word saved in our DB
       // If not, retrieve word
-        oxford.api.getDefinition(word)
-          .then((data) => {
-            console.log('WORDS - getController = ', data);
-            res.status(200).send(data);
-          })
+        // oxford.api.getDefinition(word)
+        //   .then((data) => {
+        //     console.log('WORDS - getController = ', data);
+        //     res.status(200).send(data);
+        //   })
       // If we already have word, proceed
         // res.status(201).send();
     
