@@ -31,7 +31,7 @@ npm-debug.log
 node_modules
 
 ### Notes ###
-notes.*
+notes.txt
 
 ### Docker ###
 docker-compose.yml

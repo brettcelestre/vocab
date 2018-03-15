@@ -13,7 +13,7 @@ module.exports = {
     
     // Logout user and destroy session
     req.session.destroy(function() {
-      res.redirect('/');
+      res.send();
     });
   }
 };
