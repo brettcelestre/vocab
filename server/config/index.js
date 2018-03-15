@@ -3,10 +3,12 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const expressJoi = require('express-joi-validator');
 
+const authCheck = require('app/server/util/authCheck');
 const signUpModel = require('app/server/api/users/signUp/signUpValidation');
 
 module.exports = function (app, express) {
   
+  const home = express.Router();
   const healthCheck = express.Router();
   const signUpRoutes = express.Router();
   const loginRoutes = express.Router();
@@ -29,7 +31,7 @@ module.exports = function (app, express) {
   app.use('/login', loginRoutes);
   require('../api/users/login/loginRoutes')(loginRoutes);
 
-  app.use('/logout', logoutRoutes);
+  app.use('/logout', authCheck, logoutRoutes);
   require('../api/users/logout/logoutRoutes')(logoutRoutes);
 
   app.use('/forgot-password', forgotPasswordRoutes);
@@ -38,7 +40,7 @@ module.exports = function (app, express) {
   app.use('/words', getRoutes);
   require('../api/words/get/getRoutes')(getRoutes);
 
-  app.use('/words', addRoutes);
+  app.use('/words', authCheck, addRoutes);
   require('../api/words/add/addRoutes')(addRoutes);
 
   // General Error Handler
