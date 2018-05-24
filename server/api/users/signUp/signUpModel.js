@@ -28,7 +28,12 @@ const UserSchema = new Schema({
   words: [WordSchema],
   mobile: {
     type: String,
-    required: true,
+    required: false,
+    unique: true
+  },
+  email: {
+    type: String,
+    required: false,
     unique: true
   },
   createdAt: {

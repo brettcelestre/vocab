@@ -8,7 +8,8 @@ const User = require('app/server/api/users/signUp/signUpModel');
 const Word = require('./wordModel');
 
 const getWord = (word) => {
-  console.log('DB > api > getWord = ', word);
+  console.log('============================');
+  console.log('Backend > DB > API > getWord = ', word);
 
   return Word.findOne({word: word})
     .exec(function(err, word) {
@@ -16,20 +17,19 @@ const getWord = (word) => {
       if (!word) {
         console.log(' >>> word does not exist in our db');
         return false;
-        // return reject(false);
       // This word already exists
       } else {
         console.log('Word already exists, Got the word = ', word);
         return word;
-        // return resolve(word);
       }
     });
 };
 
 const saveWord = (definition) => {
-  console.log('Backend > DB > saveWord');
+  console.log('============================');
+  console.log('Backend > DB > API > saveWord');
   var newWord = new Word(definition);
-  newWord.save(function(err, user) {
+  newWord.save(function(err, word) {
     if (err) {
       console.log('========== err = ', err);
       return console.error(err);
@@ -40,6 +40,7 @@ const saveWord = (definition) => {
 }
 
 const addWordToUser = (word) => {
+  console.log('============================');
   console.log('Backend > db > addWordToUser = req.session.username = ', req.session.username);
   // UserModel.findOne({word})
   //   .exec(function(err, word) {

@@ -29,12 +29,14 @@ module.exports = {
               req.session.regenerate(function() {
                 // Adds this user to current session
                 req.session.user = user;
+                console.log('User Created, new session = ', req.session.user);
                 res.status(201).send({username: user.username});
               });
             }
           });
         // This user already exists
         } else {
+          console.log('User Already Exists');
           res.status(409).send({message: 'Username already exists.'});
         }
       });

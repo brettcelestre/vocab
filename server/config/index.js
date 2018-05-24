@@ -37,8 +37,8 @@ module.exports = function (app, express) {
   app.use('/forgot-password', forgotPasswordRoutes);
   require('../api/users/forgotPassword/forgotPasswordRoutes')(forgotPasswordRoutes);
 
-  app.use('/words', getRoutes);
-  require('../api/words/get/getRoutes')(getRoutes);
+  // app.use('/words', getRoutes);
+  // require('../api/words/get/getRoutes')(getRoutes);
 
   app.use('/words', authCheck, addRoutes);
   require('../api/words/add/addRoutes')(addRoutes);
