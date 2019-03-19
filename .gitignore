@@ -32,6 +32,7 @@ node_modules
 
 ### Notes ###
 notes.txt
+*.txt
 
 ### Docker ###
 docker-compose.yml

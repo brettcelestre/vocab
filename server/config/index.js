@@ -26,6 +26,7 @@ module.exports = function (app, express) {
   require('../api/users/healthCheck/healthCheckRoutes')(healthCheck);
 
   app.use('/signup', expressJoi(signUpModel), signUpRoutes);
+  // app.use('/signup', signUpRoutes);
   require('../api/users/signUp/signUpRoutes')(signUpRoutes);
 
   app.use('/login', loginRoutes);

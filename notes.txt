@@ -1,6 +1,25 @@
+______________________________________
+S T A R T   P R O J E C T 
 To start:
-docker-compose up mongo
+docker-compose up -d db
 docker-compose up dev
+docker-compose up mongo
+
+__________________________________________
+D A T A B A S E
+Switch server to mySQL
+password: adminadmin
+
+AWS.KMS - encryption tool?
+
+__________________________________________
+S E S S I O N S
+DynamoDB NoSQL server for connection for sessions
+Get AWS DynamoDB set up with creds
+
+__________________________________________
+S E Q U E L I Z E   D O C S
+http://docs.sequelizejs.com/
 
 ref
 https://github.com/sahat/hackathon-starter/tree/bfaf67978460982ac5accc9b5835a257f1acf09c

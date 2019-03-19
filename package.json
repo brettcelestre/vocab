@@ -36,10 +36,13 @@
     "mongod": "^2.0.0",
     "mongoose": "^4.13.5",
     "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
     "path": "^0.12.7",
     "q": "^1.5.1",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
+    "sequelize": "^4.37.10",
     "socket.io": "^2.0.4"
   },
   "devDependencies": {
